@@ -1,0 +1,43 @@
+<nav class="navbar navbar-default main-navbar navbar-custom navbar-white"
+		id="mynavbar-1" th:fragment="header">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" id="menu-button">
+					<span class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<div class="header-search hidden-lg">
+					<a href="javascript:void(0)" class="search-button"><span><i
+							class="fa fa-search"></i></span></a>
+				</div>
+				<a th:href="@{/}" class="navbar-brand"><span><i
+						class="fa fa-subway"></i>Tàu</span>Điện Ngầm</a>
+			</div>
+			<!-- end navbar-header -->
+
+			<div class="collapse navbar-collapse" id="myNavbar1">
+				<ul class="nav navbar-nav navbar-right navbar-search-link">
+					
+					
+					<li class="dropdown">
+						<a href="#">Liên hệ</a>
+					</li>
+					
+					<li class="dropdown">
+						<a href="#">Đăng nhập</a>
+					</li>
+					<li class="dropdown">
+						<a th:href="@{/cart}" id="cart">
+							<i style="font-size: 30px; color: #faa61a; "  class="fa fa-cart-plus">
+								
+							</i>
+							
+						</a>
+					</li>
+				</ul>
+			</div>
+			<!-- end navbar collapse -->
+		</div>
+		<!-- end container -->
+	</nav>
+	<!-- end navbar -->

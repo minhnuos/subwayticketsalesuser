@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <title>My Cards</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <link rel="icon" href="images/favicon.png" type="image/x-icon">
+        
+        <!-- Google Fonts -->	
+        <link href="https://fonts.googleapis.com/css?family=Lato:300,300i,400,400i,700,700i,900,900i%7CMerriweather:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+        
+       <!-- Bootstrap Stylesheet -->
+	<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+
+	<!-- Font Awesome Stylesheet -->
+	<link rel="stylesheet" th:href="@{/css/font-awesome.min.css}">
+	
+	<!-- Custom Stylesheets -->
+	<link rel="stylesheet" th:href="@{/css/style.css}">
+	
+	<link rel="stylesheet" id="cpswitch" th:href="@{/css/orange.css}">
+	<link rel="stylesheet" th:href="@{/css/responsive.css}">
+	
+	<!-- Owl Carousel Stylesheet -->
+	<link rel="stylesheet" th:href="@{/css/owl.carousel.css}">
+	<link rel="stylesheet" th:href="@{/css/owl.theme.css}">
+	
+	<!-- Flex Slider Stylesheet -->
+	<link rel="stylesheet" th:href="@{/css/flexslider.css}" type="text/css" />
+	
+	<!--Date-Picker Stylesheet-->
+	<link rel="stylesheet" th:href="@{/css/datepicker.css}">
+	
+	<!-- Magnific Gallery -->
+	<link rel="stylesheet" th:href="@{/css/magnific-popup.css}">
+
+       
+        <link rel="stylesheet" th:href="@{/assets/css/style.min.css}">
+    
+    </head>
+    
+    
+    <body>
+    
+
+        
+       <div th:replace="/layout/header :: header"></div>
+
+	<section class="page-cover dashboard">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-12">
+					<h1 class="page-title">My Account</h1>
+					<ul class="breadcrumb">
+						<li><a href="#">Home</a></li>
+						<li class="active">My Account</li>
+					</ul>
+				</div>
+				<!-- end columns -->
+			</div>
+			<!-- end row -->
+		</div>
+		<!-- end container -->
+	</section>
+
+	
+        <div class="section section-margin"style="margin-top: 100px;">
+        <div class="container">
+
+            <div class="row">
+                <div class="col-12">
+
+                    <!-- Cart Table Start -->
+                    <div class="cart-table table-responsive">
+                        <table class="table table-bordered">
+
+                            <!-- Table Head Start -->
+                            <thead>
+                                <tr>
+                                   
+                                    <th class="pro-title">Chuyến đi</th>
+                                    <th class="pro-price">Thời gian</th>
+                                    <th class="pro-price">Giá vé</th>
+                                    <th class="pro-quantity">Số lượng vé</th>
+                                    <th class="pro-subtotal">Tổng tiền</th>
+                                    <th class="pro-remove">Xóa</th>
+                                </tr>
+                            </thead>
+                            <!-- Table Head End -->
+
+                            <!-- Table Body Start -->
+                            <tbody>
+                                <tr th:each="cart : ${carts}">
+                                    <td class="pro-title">
+                                    	<p th:text="${'Từ ' + cart.stopPointStart + ' đến ' + cart.stopPointEnd}"> </p>
+                                    </td>
+                                    <td class="pro-price">
+                                    	<span th:if="${cart.time > 0}" th:text="${'Lúc ' + cart.time + ' giờ '}"></span>
+                                    	<span th:if="${cart.time < 0}" >Cả ngày</span>
+                                    	<span th:text="${' ngày ' + cart.day}"></span>
+                                    	
+                                    </td>
+                                    <td class="pro-price"><span th:text="${cart.price}"></span></td>
+                                    <td class="pro-quantity">
+                                        <div class="quantity">
+                                            <div class="cart-plus-minus">
+                                                <input class="cart-plus-minus-box" 
+                                                	th:value="${cart.quantity}" type="text" 
+                                                	th:data-id="${cart.id}"
+                                    				th:data-tour="${cart.tour}"
+                                                />
+                                                <div 
+                                                	class="dec qtybutton"
+                                                	
+                                                 >-</div>
+                                                <div 
+                                                	class="inc qtybutton"
+                                                	
+                                                >+</div>
+                                                <div class="dec qtybutton"
+                                                	th:data-id="${cart.id}"
+                                    				th:data-tour="${cart.tour}"
+                                                ><i class="fa fa-minus"></i></div>
+                                                <div class="inc qtybutton"
+                                                	th:data-id="${cart.id}"
+                                    				th:data-tour="${cart.tour}"
+                                                ><i class="fa fa-plus"></i></div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="pro-subtotal"><span th:text="${cart.price*cart.quantity}"></span></td>
+                                    <td class="pro-remove">
+                                    	<a href="#" 
+                                    		class="btn-delete-cart"
+                                    		th:data-id="${cart.id}"
+                                    		th:data-tour="${cart.tour}"
+                                    	>
+                                    		<i class="fa fa-trash"></i>
+                                    	</a>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            <!-- Table Body End -->
+
+                        </table>
+                    </div>
+                    <!-- Cart Table End -->
+
+                    <!-- Cart Update Option Start -->
+                    <div class="cart-update-option d-block d-md-flex justify-content-between">
+
+                        <!-- Apply Coupon Wrapper Start -->
+                        <div class="apply-coupon-wrapper">
+                            
+                        </div>
+                        <!-- Apply Coupon Wrapper End -->
+
+                        <!-- Cart Update Start -->
+                        <div class="cart-update mt-sm-16">
+                            <a href="#" class="btn btn-dark btn-hover-primary rounded-0">Tiến hành đặt vé</a>
+                        </div>
+                        <!-- Cart Update End -->
+
+                    </div>
+                    <!-- Cart Update Option End -->
+
+                </div>
+            </div>
+
+            
+        </div>
+    </div>
+    <!-- Shopping Cart Section End -->
+
+        
+        
+        <!--======================= FOOTER =======================-->
+        <section id="footer" class="ftr-heading-o ftr-heading-mgn-1">
+        
+            <div id="footer-top" class="banner-padding ftr-top-black ftr-text-white">
+                <div class="container">
+                    <div class="row">
+						
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 footer-widget ftr-contact">
+                            <h3 class="footer-heading">CONTACT US</h3>
+                            <ul class="list-unstyled">
+                            	<li><span><i class="fa fa-map-marker"></i></span>29 Land St, Lorem City, CA</li>
+                            	<li><span><i class="fa fa-phone"></i></span>+00 123 4567</li>
+                                <li><span><i class="fa fa-envelope"></i></span>info@starhotel.com</li>
+                            </ul>
+                        </div><!-- end columns -->
+                        
+                        <div class="col-xs-12 col-sm-6 col-md-2 col-lg-2 footer-widget ftr-links">
+                            <h3 class="footer-heading">COMPANY</h3>
+                            <ul class="list-unstyled">
+                            	<li><a href="#">Home</a></li>
+                            	<li><a href="#">Flight</a></li>
+                                <li><a href="#">Hotel</a></li>
+                                <li><a href="#">Tours</a></li>
+                                <li><a href="#">Cruise</a></li>
+                                <li><a href="#">Cars</a></li>
+                            </ul>
+                        </div><!-- end columns -->
+                        
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 footer-widget ftr-links ftr-pad-left">
+                        	<h3 class="footer-heading">RESOURCES</h3>
+                            <ul class="list-unstyled">
+                            	<li><a href="#">Blogs</a></li>
+                            	<li><a href="#">Contact Us</a></li>
+                                <li><a href="#">Login</a></li>
+                                <li><a href="#">Register</a></li>
+                                <li><a href="#">Site Map</a></li>
+                            </ul>
+                        </div><!-- end columns -->
+
+                        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 footer-widget ftr-about">
+                            <h3 class="footer-heading">ABOUT US</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit.</p>
+                            <ul class="social-links list-inline list-unstyled">
+                            	<li><a href="#"><span><i class="fa fa-facebook"></i></span></a></li>
+                            	<li><a href="#"><span><i class="fa fa-twitter"></i></span></a></li>
+                                <li><a href="#"><span><i class="fa fa-google-plus"></i></span></a></li>
+                                <li><a href="#"><span><i class="fa fa-pinterest-p"></i></span></a></li>
+                                <li><a href="#"><span><i class="fa fa-instagram"></i></span></a></li>
+                                <li><a href="#"><span><i class="fa fa-linkedin"></i></span></a></li>
+                                <li><a href="#"><span><i class="fa fa-youtube-play"></i></span></a></li>
+                            </ul>
+                        </div><!-- end columns -->
+                        
+                    </div><!-- end row -->
+                </div><!-- end container -->
+            </div><!-- end footer-top -->
+
+            <div id="footer-bottom" class="ftr-bot-black">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6" id="copyright">
+                            <p>© 2017 <a href="#">StarTravel</a>. All rights reserved.</p>
+                        </div><!-- end columns -->
+                        
+                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6" id="terms">
+                            <ul class="list-unstyled list-inline">
+                            	<li><a href="#">Terms & Condition</a></li>
+                                <li><a href="#">Privacy Policy</a></li>
+                            </ul>
+                        </div><!-- end columns -->
+                    </div><!-- end row -->
+                </div><!-- end container -->
+            </div><!-- end footer-bottom -->
+            
+        </section><!-- end footer -->
+        
+       <div th:replace="/layout/footer :: footer"></div>
+        
+        <!-- Page Scripts Starts -->
+	<script th:src="@{/js/jquery.min.js}"></script>
+	<script th:src="@{/js/jquery.magnific-popup.min.js}"></script>
+	<script th:src="@{/js/bootstrap.min.js}"></script>
+	<script th:src="@{js/jquery.flexslider.js}"></script>
+	<script th:src="@{/js/bootstrap-datepicker.js}"></script>
+	<script th:src="@{/js/owl.carousel.min.js}"></script>
+	
+	<script th:src="@{/js/custom-flex.js}"></script>
+	<script th:src="@{/js/custom-owl.js}"></script>
+	<script th:src="@{/js/custom-date-picker.js}"></script>
+	<script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+	
+	<!-- Page Scripts Ends -->
+        <script th:src="@{/assets/js/vendor.min.js}"></script>
+        <script th:src="@{/assets/js/plugins.min.js}"></script>
+    
+    
+    
+        <!--Main JS-->
+        <script th:src="@{/assets/js/main.js}"></script>
+        <!-- Page Scripts Ends -->
+        <script th:src="@{/js/custom.js}"></script>
+    </body>
+</html>

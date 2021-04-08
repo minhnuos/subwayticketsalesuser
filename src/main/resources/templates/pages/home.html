@@ -1,0 +1,459 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>Index</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="icon" th:href="@{/images/favicon.png}" type="image/x-icon">
+
+<!-- Google Fonts -->
+<link
+	href="https://fonts.googleapis.com/css?family=Lato:300,300i,400,400i,700,700i,900,900i%7CMerriweather:300,300i,400,400i,700,700i,900,900i"
+	rel="stylesheet">
+
+<!-- Bootstrap Stylesheet -->
+<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+
+<!-- Font Awesome Stylesheet -->
+<link rel="stylesheet" th:href="@{/css/font-awesome.min.css}">
+
+<!-- Custom Stylesheets -->
+<link rel="stylesheet" th:href="@{/css/style.css}">
+<link rel="stylesheet" id="cpswitch" th:href="@{/css/orange.css}">
+<link rel="stylesheet" th:href="@{/css/responsive.css}">
+
+<!-- Owl Carousel Stylesheet -->
+<link rel="stylesheet" th:href="@{/css/owl.carousel.css}">
+<link rel="stylesheet" th:href="@{/css/owl.theme.css}">
+
+<!-- Flex Slider Stylesheet -->
+<link rel="stylesheet" th:href="@{/css/flexslider.css}" type="text/css" />
+
+<!--Date-Picker Stylesheet-->
+<link rel="stylesheet" th:href="@{/css/datepicker.css}">
+
+<!-- Magnific Gallery -->
+<link rel="stylesheet" th:href="@{/css/magnific-popup.css}">
+</head>
+
+
+<body id="main-homepage">
+
+	
+	 <div th:replace="/layout/header :: header"></div>
+
+	
+
+	
+	
+	
+
+
+	<!--========================= FLEX SLIDER =====================-->
+	<section class="flexslider-container" id="flexslider-container-1">
+
+		<div class="flexslider slider" id="slider-1">
+			<ul class="slides">
+
+				<li class="item-1"
+					style="background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(https://img.lovepik.com/photo/50110/7061.jpg_wh860.jpg) 50% 0%; background-size: cover; height: 100%;">
+					<div class=" meta">
+						<div class="container">
+							<h2>Khám Phá</h2>
+							<h1>Hà Nội</h1>
+							
+						</div>
+						<!-- end container -->
+					</div>
+					<!-- end meta -->
+				</li>
+				<!-- end item-1 -->
+
+				<li class="item-2"
+					style="background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(https://img.lovepik.com/photo/50110/7061.jpg_wh860.jpg) 50% 0%; background-size: cover; height: 100%;">
+					<div class=" meta">
+						<div class="container">
+							<h2>Khám Phá</h2>
+							<h1>Hà Nội</h1>
+							
+						</div>
+						<!-- end container -->
+					</div>
+					<!-- end meta -->
+				</li>
+				<!-- end item-2 -->
+
+			</ul>
+		</div>
+		<!-- end slider -->
+
+		<div class="search-tabs" id="search-tabs-1">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-12">
+
+						<ul class="nav nav-tabs center-tabs">
+							<li class="active"><a href="#flights" data-toggle="tab"><span><i
+										class="fa fa-subway"></i></span><span class="st-text">Theo Tuyến</span></a></li>
+							<li><a href="#tours" data-toggle="tab"><span><i
+										class="fa fa-suitcase"></i></span><span class="st-text">Theo Tour</span></a></li>
+						</ul>
+
+						<div class="tab-content">
+
+							<div id="flights" class="tab-pane in active">
+								<form th:action="@{/trip}" method="get">
+									<div class="row">
+
+										<div class="col-xs-12 col-sm-12 col-md-8 col-lg-7">
+											<div class="row">
+
+												<div class="col-xs-12 col-sm-6 col-md-6">
+													<div class="form-group left-icon">
+														<select name="StopPointDTOStart_id" class="form-control" style="padding-left: 30px;">
+															<option>Chọn điểm xuất phát</option>
+													     	<option th:each="listStopPointDTO : ${listStopPointDTOs}" th:value="${listStopPointDTO.id}" th:text="${listStopPointDTO.name}"></option>
+															
+													      
+													    </select>
+														<i class="fa fa-map-marker"></i>
+													</div>
+												</div>
+												<!-- end columns -->
+
+												<div class="col-xs-12 col-sm-6 col-md-6">
+													<div class="form-group left-icon">
+														<select name="StopPointDTOEnd_id" class="form-control"  style="padding-left: 30px;">
+															<option>Chọn điểm kết thúc</option>
+													      	<option th:each="listStopPointDTO : ${listStopPointDTOs}" th:value="${listStopPointDTO.id}" th:text="${listStopPointDTO.name}"></option>
+
+													    </select>
+													   
+														<i class="fa fa-map-marker"></i>
+													</div>
+												</div>
+												<!-- end columns -->
+
+											</div>
+											<!-- end row -->
+										</div>
+										<!-- end columns -->
+
+										<div class="col-xs-12 col-sm-12 col-md-4 col-lg-3">
+											<div class="row">
+
+												<div class="col-xs-12 col-sm-12 col-md-12">
+													<div class="form-group left-icon">
+														<input type="date" class="form-control "
+															name="day"
+															placeholder="Check In" 
+															th:min="${firstDay}"
+															th:value="${firstDay}"
+															th:max="${lastDay.day}"
+															> <i
+															class="fa fa-calendar"></i>
+													</div>
+												</div>
+												<!-- end columns -->
+
+												
+
+											</div>
+											<!-- end row -->
+										</div>
+										<!-- end columns -->
+
+										
+
+										<div class="col-xs-12 col-sm-12 col-md-12 col-lg-2 search-btn">
+											<button class="btn btn-orange">Tìm kiếm</button>
+										</div>
+										<!-- end columns -->
+
+									</div>
+									<!-- end row -->
+								</form>
+							</div>
+							<!-- end flights -->
+
+							<div id="tours" class="tab-pane">
+								<form th:action="@{/ticketstour}" method="get">
+									<div class="row">
+										<div class="col-xs-12 col-sm-12 col-md-12 col-lg-10">
+											<div class="row">
+
+												<div class="col-xs-12 col-sm-6 col-md-6">
+													<div class="form-group left-icon">
+														<select class="form-control" name="stopPointDTOStart_id" style="padding-left: 30px;">
+															<option>Chọn điểm xuất phát</option>
+													      <option th:each="listStopPointDTO : ${listStopPointDTOs}" th:value="${listStopPointDTO.id}" th:text="${listStopPointDTO.name}"></option>
+													      
+													    </select>
+														<i class="fa fa-map-marker"></i>
+													</div>
+												</div>
+												<!-- end columns -->
+
+												<div class="col-xs-12 col-sm-6 col-md-6">
+													<div class="form-group left-icon">
+														<select name="stopPointDTOEnd_id"class="form-control"  style="padding-left: 30px;">
+															<option>Chọn điểm kết thúc</option>
+													    	<option th:each="listStopPointDTO : ${listStopPointDTOs}" th:value="${listStopPointDTO.id}" th:text="${listStopPointDTO.name}"></option>
+
+													    </select>
+													   
+														<i class="fa fa-map-marker"></i>
+													</div>
+												</div>
+												<!-- end columns -->
+
+											</div>
+											<!-- end row -->
+										</div>
+										<!-- end columns -->
+
+										
+
+										
+
+										<div class="col-xs-12 col-sm-12 col-md-12 col-lg-2 search-btn">
+											<button class="btn btn-orange">Tìm kiếm</button>
+										</div>
+										<!-- end columns -->
+									</div>
+									<!-- end row -->
+								</form>
+							</div>
+							<!-- end tours -->
+
+
+						</div>
+						<!-- end tab-content -->
+
+					</div>
+					<!-- end columns -->
+				</div>
+				<!-- end row -->
+			</div>
+			<!-- end container -->
+		</div>
+		<!-- end search-tabs -->
+
+	</section>
+	<!-- end flexslider-container -->
+
+
+
+	<!--======================= BEST FEATURES =====================-->
+	<section id="best-features" class="banner-padding black-features">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-6 col-md-3">
+					<div class="b-feature-block">
+						<span><i class="fa fa-dollar"></i></span>
+						<h3>Best Price Guarantee</h3>
+						<p>Lorem ipsum dolor sit amet, ad duo fugit aeque fabulas, in
+							lucilius prodesset pri. Veniam delectus ei vis.</p>
+					</div>
+					<!-- end b-feature-block -->
+				</div>
+				<!-- end columns -->
+
+				<div class="col-sm-6 col-md-3">
+					<div class="b-feature-block">
+						<span><i class="fa fa-lock"></i></span>
+						<h3>Safe and Secure</h3>
+						<p>Lorem ipsum dolor sit amet, ad duo fugit aeque fabulas, in
+							lucilius prodesset pri. Veniam delectus ei vis.</p>
+					</div>
+					<!-- end b-feature-block -->
+				</div>
+				<!-- end columns -->
+
+				<div class="col-sm-6 col-md-3">
+					<div class="b-feature-block">
+						<span><i class="fa fa-thumbs-up"></i></span>
+						<h3>Best Travel Agents</h3>
+						<p>Lorem ipsum dolor sit amet, ad duo fugit aeque fabulas, in
+							lucilius prodesset pri. Veniam delectus ei vis.</p>
+					</div>
+					<!-- end b-feature-block -->
+				</div>
+				<!-- end columns -->
+
+				<div class="col-sm-6 col-md-3">
+					<div class="b-feature-block">
+						<span><i class="fa fa-bars"></i></span>
+						<h3>Travel Guidelines</h3>
+						<p>Lorem ipsum dolor sit amet, ad duo fugit aeque fabulas, in
+							lucilius prodesset pri. Veniam delectus ei vis.</p>
+					</div>
+					<!-- end b-feature-block -->
+				</div>
+				<!-- end columns -->
+			</div>
+			<!-- end row -->
+		</div>
+		<!-- end container -->
+	</section>
+	<!-- end best-features -->
+
+
+	<!--=============== TOUR OFFERS ===============-->
+	<section id="tour-offers" class="section-padding">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="page-heading">
+						<h2 style="color: beige;">Các Vé Tuor</h2>
+						<hr class="heading-line" />
+					</div>
+					<!-- end page-heading -->
+
+					<div class="owl-carousel owl-theme owl-custom-arrow"
+						id="owl-tour-offers">
+
+						<div class="item" th:each="ticketsTourDTO : ${ticketsTourDTOs}" th:if="${ticketsTourDTOs != null}">
+							<div class="main-block tour-block">
+								<div class="main-img">
+									<a href="#"> <img src="https://media.ex-cdn.com/EXP/media.tapchigiaothong.vn/files/duc.anh/2015/12/03/london-ra-mat-mau-thiet-ke-tau-dien-dai-200m-1-1-0939.jpg"
+										class="img-responsive" alt="tour-img" />
+									</a>
+								</div>
+								<!-- end offer-img -->
+
+								<div class="offer-price-2">
+									<ul class="list-unstyled">
+										<li class="price" th:text="${'Giá ' + ticketsTourDTO.price + ' vnđ'}"><a href="#"><span
+												class="arrow"><i class="fa fa-angle-right"></i></span></a></li>
+									</ul>
+								</div>
+								<!-- end offer-price-2 -->
+
+								<div class="main-info tour-info">
+									<div class="main-title tour-title">
+										<a href="#" th:text="${'Từ ' + ticketsTourDTO.getRouteDTO().getStopPointDTOStart().name + ' đến ' + ticketsTourDTO.getRouteDTO().getStopPointDTOEnd().name}"></a>
+										<p th:text="${'Ngày ' + ticketsTourDTO.getDayDTO().day}"></p>
+										<button class="btn btn-block btn-orange">Thêm vào giỏ hàng</button>
+									</div>
+									<!-- end tour-title -->
+								</div>
+								<!-- end tour-info -->
+							</div>
+							<!-- end tour-block -->
+						</div>
+						<!-- end item -->
+
+
+					</div>
+					<!-- end owl-tour-offers -->
+
+					
+				</div>
+				<!-- end columns -->
+			</div>
+			<!-- end row -->
+		</div>
+		<!-- end container -->
+	</section>
+	<!-- end tour-offers -->
+
+
+
+
+
+	<!--==================== HIGHLIGHTS ====================-->
+	<section id="highlights" class="section-padding back-size">
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+					<div class="row">
+						<div id="boxes">
+
+							<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+								<div class="highlight-box">
+									<div class="h-icon">
+										<span><i class="fa fa-plane"></i></span>
+									</div>
+									<!-- end h-icon -->
+
+									<div class="h-text">
+										<span class="numbers">2496</span>
+										<p>Outstanding Tours</p>
+									</div>
+									<!-- end h-text -->
+								</div>
+								<!-- end highlight-box -->
+							</div>
+							<!-- end columns -->
+
+							<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+								<div class="highlight-box">
+									<div class="h-icon">
+										<span><i class="fa fa-ship"></i></span>
+									</div>
+									<!-- end h-icon -->
+
+									<div class="h-text cruise">
+										<span class="numbers">1906</span>
+										<p>Worldwide Cruise</p>
+									</div>
+									<!-- end h-text -->
+								</div>
+								<!-- end highlight-box -->
+							</div>
+							<!-- end columns -->
+
+							<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+								<div class="highlight-box">
+									<div class="h-icon">
+										<span><i class="fa fa-taxi"></i></span>
+									</div>
+									<!-- end h-icon -->
+
+									<div class="h-text taxi">
+										<span class="numbers">2033</span>
+										<p>Luxury Car Booking</p>
+									</div>
+									<!-- end h-text -->
+								</div>
+								<!-- end highlight-box -->
+							</div>
+							<!-- end columns -->
+
+						</div>
+						<!-- end boxes -->
+					</div>
+					<!-- end row -->
+				</div>
+				<!-- end columns -->
+			</div>
+			<!-- end row -->
+		</div>
+		<!-- end container -->
+	</section>
+	<!-- end highlights -->
+
+
+ <div th:replace="/layout/footer :: footer"></div>
+	
+
+	
+
+	
+	<!-- Page Scripts Starts -->
+	<script th:src="@{/js/jquery.min.js}"></script>
+	<script th:src="@{/js/jquery.magnific-popup.min.js}"></script>
+	<script th:src="@{/js/bootstrap.min.js}"></script>
+	<script th:src="@{js/jquery.flexslider.js}"></script>
+	<script th:src="@{/js/bootstrap-datepicker.js}"></script>
+	<script th:src="@{/js/owl.carousel.min.js}"></script>
+	<script th:src="@{/js/custom-navigation.js}"></script>
+	<script th:src="@{/js/custom-flex.js}"></script>
+	<script th:src="@{/js/custom-owl.js}"></script>
+	<script th:src="@{/js/custom-date-picker.js}"></script>
+	<script th:src="@{/js/custom.js}"></script>
+	<!-- Page Scripts Ends -->
+
+</body>
+</html>

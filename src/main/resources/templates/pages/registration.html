@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>Index</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="icon" th:href="@{/images/favicon.png}" type="image/x-icon">
+
+<!-- Google Fonts -->
+<link
+	href="https://fonts.googleapis.com/css?family=Lato:300,300i,400,400i,700,700i,900,900i%7CMerriweather:300,300i,400,400i,700,700i,900,900i"
+	rel="stylesheet">
+
+<!-- Bootstrap Stylesheet -->
+<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+
+<!-- Font Awesome Stylesheet -->
+<link rel="stylesheet" th:href="@{/css/font-awesome.min.css}">
+
+<!-- Custom Stylesheets -->
+<link rel="stylesheet" th:href="@{/css/style.css}">
+<link rel="stylesheet" id="cpswitch" th:href="@{/css/orange.css}">
+<link rel="stylesheet" th:href="@{/css/responsive.css}">
+
+
+</head>
+
+
+<body >
+
+	
+
+	
+
+	
+	
+	<!--================ PAGE-COVER =================-->
+        <section class="page-cover" id="cover-registration">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12">
+                    	<h1 class="page-title">Đăng ký Tài khoản</h1>
+                        <ul class="breadcrumb">
+                            <li><a th:href="@{/}">Trang chủ</a></li>
+                            <li class="active">Đăng ký Tài khoản</li>
+                        </ul>
+                    </div><!-- end columns -->
+                </div><!-- end row -->
+            </div><!-- end container -->
+        </section><!-- end page-cover -->
+        
+        
+        <!--===== INNERPAGE-WRAPPER ====-->
+        <section class="innerpage-wrapper">
+        	<div id="registration" class="innerpage-section-padding">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-12">
+                        
+                        	<div class="flex-content">
+                                <div class="custom-form custom-form-fields">
+                                    <h3>Đăng ký</h3>
+                                    <p>Bạn cần đăng ký tài khoản để có thể đăng nhập vào hệ thống mua vé</p>
+                                    <form th:action="@{/registration}" method="post">
+                                            
+                                        
+        
+                                        <div class="form-group">
+                                             <input type="email" class="form-control" placeholder="Email" name="username"  required/>
+                                             <span><i class="fa fa-envelope"></i></span>
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                             <input type="password" class="form-control" placeholder="Password" name="password" required/>
+                                             <span><i class="fa fa-lock"></i></span>
+                                        </div>
+        
+                                       
+                                        
+                                        <button class="btn btn-orange btn-block">Đăng ký</button>
+                                    </form>
+                                    
+                                   
+                                </div><!-- end custom-form -->
+                                
+                                <div class="flex-content-img custom-form-img">
+                                    <img src="https://img.lovepik.com/photo/50110/7061.jpg_wh860.jpg" class="img-responsive" alt="registration-img" />
+                                </div><!-- end custom-form-img -->
+                            </div><!-- end form-content -->
+                            
+                        </div><!-- end columns -->
+                    </div><!-- end row -->
+                </div><!-- end container -->         
+            </div><!-- end registration -->
+        </section><!-- end innerpage-wrapper -->
+        
+
+
+
+
+
+
+
+	
+
+	
+
+	
+	<!-- Page Scripts Starts -->
+	<script th:src="@{/js/jquery.min.js}"></script>
+	
+	<script th:src="@{/js/bootstrap.min.js}"></script>
+	<script th:src="@{/js/custom-navigation.js}"></script>
+	<script th:src="@{/js/custom.js}"></script>
+	<!-- Page Scripts Ends -->
+
+</body>
+</html>
