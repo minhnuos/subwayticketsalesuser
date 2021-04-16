@@ -15829,7 +15829,7 @@ body[dir="rtl"] {
 .cart-update-option .apply-coupon-wrapper form input {
     border: 1px solid #E8E8E8;
     font-size: 14px;
-    padding: 12px 10px;
+    
     outline: none;
     margin-right: 15px;
     width: 100%;

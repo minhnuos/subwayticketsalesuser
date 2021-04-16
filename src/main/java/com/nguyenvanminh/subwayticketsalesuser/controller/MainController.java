@@ -105,7 +105,6 @@ public class MainController {
 			String appUrl = request.getContextPath();
 			Users user = this.userDAO.findUserByEmail(username);
 			eventPublisher.publishEvent(new OnRegistrationCompleteEvent(user, request.getLocale(), appUrl));
-			System.out.println(2);
 			map.addAttribute("message", "Vui lòng xác nhận email!");
 			return "pages/registration";
 		}else {

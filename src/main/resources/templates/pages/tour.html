@@ -99,7 +99,16 @@
 																<li th:inline="text"><span>Giá:  </span>  [[${ticketsTourDTO.price}]] vnđ </li>
 																<li th:inline="text"><span>Còn lại:  </span>  [[${ticketsTourDTO.remain}]] vé </li>
 															</ul>
-															<button class="btn btn-orange">Thêm giỏ hàng</button>
+															<button 
+																
+																th:data-day="${ticketsTourDTO.getDayDTO().day}" 
+																th:data-id="${ticketsTourDTO.id}"
+																th:data-start="${ticketsTourDTO.getRouteDTO().getStopPointDTOStart().name}" 
+																th:data-end="${ticketsTourDTO.getRouteDTO().getStopPointDTOEnd().name}"
+																th:data-time="-1"
+																th:data-price="${ticketsTourDTO.price}"
+																th:data-tour="1"
+																class="btn btn-orange add-cart">Thêm giỏ hàng</button>
 														</td>
 														
 													</tr>
@@ -149,6 +158,7 @@
 	<script th:src="@{/js/custom-flex.js}"></script>
 	<script th:src="@{/js/custom-owl.js}"></script>
 	<script th:src="@{/js/custom-date-picker.js}"></script>
+	<script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 	<script th:src="@{/js/custom.js}"></script>
 	<!-- Page Scripts Ends -->
 

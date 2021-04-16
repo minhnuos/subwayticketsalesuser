@@ -1804,9 +1804,9 @@ p{
 /*********** COVER HOTEL PAGES **********/
 
 #cover-hotel-grid-list{
-	background:url('../images/cover-hotel-grid-list.jpg') 50% 20%;
-	background-size:140%;
-	color:white;
+	background:url(https://achaumedia.vn/wp-content/uploads/2020/02/cac-dia-diem-chup-anh-dep-o-ha-noi-1.jpg);
+	background-size:100%;
+	background-position:center;
 }
 
 #cover-hotel-detail{
@@ -1880,8 +1880,9 @@ p{
 /******* COVER REGISTRATION PAGE ********/
 
 #cover-registration{
-	background:url('../images/cover-registration.jpg') 50% 36%;
-	background-size:145%;
+	background:url(https://achaumedia.vn/wp-content/uploads/2020/02/cac-dia-diem-chup-anh-dep-o-ha-noi-1.jpg);
+	background-size:100%;
+	background-position:center;
 }
 
 /********** COVER LOGIN PAGE ************/
@@ -2679,7 +2680,7 @@ p{
 	opacity:1;
 }
 
-.recent-activity td.recent-ac-text{`
+.recent-activity td.recent-ac-text{
 	color:#303030;
 }
 

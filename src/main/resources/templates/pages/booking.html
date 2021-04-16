@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>Index</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="icon" href="images/favicon.png" type="image/x-icon">
+
+<!-- Google Fonts -->
+<link
+	href="https://fonts.googleapis.com/css?family=Lato:300,300i,400,400i,700,700i,900,900i%7CMerriweather:300,300i,400,400i,700,700i,900,900i"
+	rel="stylesheet">
+
+<!-- Bootstrap Stylesheet -->
+<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+
+<!-- Font Awesome Stylesheet -->
+<link rel="stylesheet" th:href="@{/css/font-awesome.min.css}">
+
+<!-- Custom Stylesheets -->
+<link rel="stylesheet" th:href="@{/css/style.css}">
+<link rel="stylesheet" id="cpswitch" th:href="@{/css/orange.css}">
+<link rel="stylesheet" th:href="@{/css/responsive.css}">
+
+<!-- Owl Carousel Stylesheet -->
+<link rel="stylesheet" th:href="@{/css/owl.carousel.css}">
+<link rel="stylesheet" th:href="@{/css/owl.theme.css}">
+
+<!-- Flex Slider Stylesheet -->
+<link rel="stylesheet" th:href="@{/css/flexslider.css}" type="text/css" />
+
+<!--Date-Picker Stylesheet-->
+<link rel="stylesheet" th:href="@{/css/datepicker.css}">
+
+<!-- Magnific Gallery -->
+<link rel="stylesheet" th:href="@{/css/magnific-popup.css}">
+
+</head>
+
+
+<body id="main-homepage">
+
+
+	<div th:replace="/layout/header :: header"></div>
+
+	 <!--=================== PAGE-COVER =================-->
+        <section class="page-cover" id="cover-hotel-grid-list">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12">
+                    	<h1 class="page-title">Lịch sử đặt vé</h1>
+                        <ul class="breadcrumb">
+                            <li><a th:href="@{/}">Trang chủ</a></li>
+                            <li class="active">Lịch sử đặt vé</li>
+                        </ul>
+                    </div><!-- end columns -->
+                </div><!-- end row -->
+            </div><!-- end container -->
+        </section><!-- end page-cover -->
+        
+        
+        <!--===== INNERPAGE-WRAPPER ====-->
+        <section class="innerpage-wrapper">
+        	<div id="hotel-listing" class="innerpage-section-padding">
+                <div class="container">
+                    <div class="row">        	
+                        
+                        <div class="col-xs-12 col-sm-12 col-md-3 side-bar left-side-bar">
+                                        
+                            <div class="side-bar-block filter-block" style="background: url(https://vntrip.cdn.vccloud.vn/cam-nang/wp-content/uploads/2018/08/thap-rua-vntrip3.jpg);
+    									height: 624px;
+		    							background-position: center;">
+                                
+                            </div><!-- end side-bar-block -->
+                            
+                            <div class="row">
+                            
+                                <div class="col-xs-12 col-sm-6 col-md-12">
+                                    <div class="side-bar-block main-block ad-block">
+                                        <div class="main-img ad-img">
+                                            <a href="#">
+                                                <img src="images/car-ad.jpg" class="img-responsive" alt="car-ad" />
+                                                <div class="ad-mask">
+                                                    <div class="ad-text">
+                                                        <span>Luxury</span>
+                                                        <h2>Car</h2>
+                                                        <span>Offer</span>
+                                                    </div><!-- end ad-text -->
+                                                </div><!-- end columns -->
+                                            </a>
+                                        </div><!-- end ad-img -->
+                                    </div><!-- end side-bar-block -->
+                                </div><!-- end columns -->
+                                
+                                <div class="col-xs-12 col-sm-6 col-md-12">    
+                                    <div class="side-bar-block support-block">
+                                        <h3>Need Help</h3>
+                                        <p>Lorem ipsum dolor sit amet, ad duo fugit aeque fabulas, in lucilius prodesset pri. Veniam delectus ei vis. Est atqui timeam mnesarchum.</p>
+                                        <div class="support-contact">
+                                            <span><i class="fa fa-phone"></i></span>
+                                            <p>+1 123 1234567</p>
+                                        </div><!-- end support-contact -->
+                                    </div><!-- end side-bar-block -->
+                                </div><!-- end columns -->
+                                
+                            </div><!-- end row -->
+                        </div><!-- end columns --> 
+                        
+                        <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 content-side" >
+							
+                            <div class="list-block main-block h-list-block" th:each="listResponseBooking : ${listResponseBookings}">
+                            	<div class="list-content">
+                            		<div class="main-img list-img h-list-img">
+                                        <a href="hotel-detail-left-sidebar.html">
+                                            <img src="https://media.ex-cdn.com/EXP/media.tapchigiaothong.vn/files/duc.anh/2015/12/03/london-ra-mat-mau-thiet-ke-tau-dien-dai-200m-1-1-0939.jpg" class="img-responsive" alt="hotel-img" />
+                                        </a>
+                                        <div class="main-mask">
+                                            <ul class="list-unstyled list-inline offer-price-1">
+                                                <li class="price">[[${listResponseBooking.total}]] vnđ<span class="divider">|</span><span class="pkg">[[${listResponseBooking.quantity}]] vé</span></li>
+                                                
+                                            </ul>
+                                        </div><!-- end main-mask -->
+                                    </div><!-- end h-list-img -->
+                                    
+                                    <div class="list-info h-list-info">
+                                         <h3 class="block-title"><a href="hotel-detail-left-sidebar.html" style="    font-family: initial;">Tên khách hàng:  [[${listResponseBooking.customerName}]]</a></h3>
+                                          <p style="    font-family: initial;" >Số điện thoại: [[${listResponseBooking.phone}]]</p>
+                                          <p style="    font-family: initial;">Thời gian: [[${listResponseBooking.time}]]</p>
+                                          <p class=" badge badge-success" style="    background-color: #28a745;" th:if="${listResponseBooking.status}" > Đã xác nhận</p>
+                                        
+                                        <p class=" badge badge-warning" style="background-color: #ffc107;" th:unless="${listResponseBooking.status}" > Chưa xác nhận</p>
+                                        <br>
+                                        <br>
+                                        <a style="float: right;"href="hotel-detail-left-sidebar.html" class="btn btn-orange btn-lg">Chi tiết</a>
+                                     </div><!-- end h-list-info -->
+                            	</div><!-- end list-content -->
+                            </div><!-- end h-list-block -->
+                            
+                            
+                            
+                        </div><!-- end columns -->
+
+                    </div><!-- end row -->
+            	</div><!-- end container -->
+            </div><!-- end hotel-listing -->
+        </section><!-- end innerpage-wrapper -->
+        
+
+
+	<div th:replace="/layout/footer :: footer"></div>
+
+
+
+
+
+	<!-- Page Scripts Starts -->
+	<script th:src="@{/js/jquery.min.js}"></script>
+	<script th:src="@{/js/jquery.magnific-popup.min.js}"></script>
+	<script th:src="@{/js/bootstrap.min.js}"></script>
+	<script th:src="@{js/jquery.flexslider.js}"></script>
+	<script th:src="@{/js/bootstrap-datepicker.js}"></script>
+	<script th:src="@{/js/owl.carousel.min.js}"></script>
+	<script th:src="@{/js/custom-navigation.js}"></script>
+	<script th:src="@{/js/custom-flex.js}"></script>
+	<script th:src="@{/js/custom-owl.js}"></script>
+	<script th:src="@{/js/custom-date-picker.js}"></script>
+	<script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+	<script th:src="@{/js/custom.js}"></script>
+	<!-- Page Scripts Ends -->
+
+</body>
+</html>

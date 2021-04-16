@@ -19,13 +19,13 @@
 				<ul class="nav navbar-nav navbar-right navbar-search-link">
 					
 					
-					<li class="dropdown">
-						<a href="#">Liên hệ</a>
-					</li>
+					<li class="dropdown open"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Tài khoản<span><i class="fa fa-angle-down"></i></span></a>
+                            <ul class="dropdown-menu">
+                            	<li><a th:href="@{/booking/history}">Lịch sử đặt vé</a></li>
+                                <li><a th:href="@{/logout}">Đăng xuất</a></li>
+                            </ul>			
+                   </li>
 					
-					<li class="dropdown">
-						<a href="#">Đăng nhập</a>
-					</li>
 					<li class="dropdown">
 						<a th:href="@{/cart}" id="cart">
 							<i style="font-size: 30px; color: #faa61a; "  class="fa fa-cart-plus">

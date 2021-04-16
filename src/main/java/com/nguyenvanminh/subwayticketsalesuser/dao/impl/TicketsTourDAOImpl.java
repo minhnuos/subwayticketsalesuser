@@ -25,4 +25,16 @@ public class TicketsTourDAOImpl implements TicketsTourDAO{
 		List<TicketsTour> ticketsTours = this.entityManager.createQuery(jql,TicketsTour.class).getResultList();
 		return ticketsTours;
 	}
+
+	@Override
+	public TicketsTour findTicketsTourById(int id) {
+		TicketsTour ticketsTour = this.entityManager.find(TicketsTour.class, id);
+		return ticketsTour;
+	}
+
+	@Override
+	public void updateTicketsTour(TicketsTour ticketsTour) {
+		// TODO Auto-generated method stub
+		this.entityManager.merge(ticketsTour);
+	}
 }

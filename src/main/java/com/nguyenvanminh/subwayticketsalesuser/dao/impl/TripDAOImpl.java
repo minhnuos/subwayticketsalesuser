@@ -25,6 +25,19 @@ public class TripDAOImpl implements TripDAO{
 		List<Trip> trips = this.entityManager.createQuery(jql, Trip.class).getResultList();
 		return trips;
 	}
+
+	@Override
+	public Trip findTripById(int id) {
+		Trip trip = this.entityManager.find(Trip.class, id);
+		return trip;
+	}
+
+	@Override
+	public void updateTrip(Trip trip) {
+
+		this.entityManager.merge(trip);
+		
+	}
 	
 	
 }

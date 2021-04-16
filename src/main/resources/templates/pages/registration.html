@@ -79,7 +79,15 @@
                                         
                                         <button class="btn btn-orange btn-block">Đăng ký</button>
                                     </form>
-                                    
+                                    <div class="other-links">
+                                    	<p class="link-line"> <a th:href="@{/login}">Đăng nhập</a></p>
+                                    </div>
+                                    <div class="other-links">
+                                    	<p class="link-line" style="    color: brown;
+										    font-size: 30px;
+										    font-style: italic;
+										" th:text="${message}"></p>
+                                    </div>
                                    
                                 </div><!-- end custom-form -->
                                 

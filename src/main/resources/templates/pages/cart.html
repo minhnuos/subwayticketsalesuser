@@ -50,10 +50,10 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-sm-12">
-					<h1 class="page-title">My Account</h1>
+					<h1 class="page-title">Giỏ hàng</h1>
 					<ul class="breadcrumb">
-						<li><a href="#">Home</a></li>
-						<li class="active">My Account</li>
+						<li><a th:href="@{/}">Trang chủ</a></li>
+						<li class="active">Giỏ hàng</li>
 					</ul>
 				</div>
 				<!-- end columns -->
@@ -151,14 +151,46 @@
 
                         <!-- Apply Coupon Wrapper Start -->
                         <div class="apply-coupon-wrapper">
-                            
+                            <div class="row">
+
+                        <div class="col-sm-12 col-md-12 no-pd-r">
+                        	<div class="custom-form contact-form">
+                            	<h3>Thông tin đặt hàng</h3>
+                                <p>Quý khách vui lòng điền dầy đủ thông tin để có thể đặt hàng.</p>
+                                <form>
+                                        
+                                    <div class="form-group">
+                                         <input type="text" class="form-control" id="username" placeholder="Tên người dùng" required=>
+                                         <span><i class="fa fa-user"></i></span>
+                                    </div>
+    
+                                    <div class="form-group">
+                                         <input type="text" class="form-control" id="phone" placeholder="Số điện thoại-lưu ý điền chính xác để chúng tôi liên hệ lại" required=>
+                                         <span><i class="fa fa-phone"></i></span>
+                                    </div>
+                                    
+                                    
+    
+                                    <div class="form-group">
+                                        <textarea class="form-control" rows="4" id="address" placeholder="Địa chỉ"></textarea>
+                                        <span><i class="fa fa-pencil"></i></span>
+                                    </div>
+    								
+                                    <div class="cart-update mt-sm-16">
+			                            <a href="#" id="booking" class="btn btn-dark btn-block btn-hover-primary rounded-0">Tiến hành đặt vé</a>
+			                        </div>
+                                </form>
+                            </div><!-- end contact-form -->
+                        </div><!-- end columns -->
+                        
+                        <!-- end columns -->
+                        
+                    </div>
                         </div>
                         <!-- Apply Coupon Wrapper End -->
 
                         <!-- Cart Update Start -->
-                        <div class="cart-update mt-sm-16">
-                            <a href="#" class="btn btn-dark btn-hover-primary rounded-0">Tiến hành đặt vé</a>
-                        </div>
+                        
                         <!-- Cart Update End -->
 
                     </div>

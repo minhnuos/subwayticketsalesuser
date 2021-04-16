@@ -3,21 +3,41 @@ package com.nguyenvanminh.subwayticketsalesuser.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import com.nguyenvanminh.subwayticketsalesuser.dao.BookingDAO;
+import com.nguyenvanminh.subwayticketsalesuser.dao.TicketsTourDAO;
+import com.nguyenvanminh.subwayticketsalesuser.dao.TripDAO;
+import com.nguyenvanminh.subwayticketsalesuser.entity.TicketsTour;
+import com.nguyenvanminh.subwayticketsalesuser.entity.Trip;
 import com.nguyenvanminh.subwayticketsalesuser.model.Cart;
+import com.nguyenvanminh.subwayticketsalesuser.model.CustomerDTO;
+import com.nguyenvanminh.subwayticketsalesuser.model.MessageResponse;
+import com.nguyenvanminh.subwayticketsalesuser.service.BookingService;
 
 @RestController
 @SessionAttributes("cart")
 public class ApiController {
+	
+	@Autowired
+	TripDAO tripDAO;
+	
+	@Autowired 
+	TicketsTourDAO ticketsTourDAO;
+	
+	@Autowired
+	BookingService bookingService;
 	
 	@SuppressWarnings("unchecked")
 	@PostMapping("/api/add-cart")
@@ -117,5 +137,43 @@ public class ApiController {
 			}
 		}
 		return null;
+	}
+	@PostMapping("/api/booking")
+	public ResponseEntity<MessageResponse> booking(HttpSession session,
+			@ModelAttribute CustomerDTO customerDTO, HttpServletRequest request
+		) {
+		if(session.getAttribute("cart") != null) {
+			List<Cart> carts = (List<Cart>) session.getAttribute("cart");
+			if(carts.size() == 0) {
+				return new ResponseEntity<MessageResponse> (new MessageResponse(false, "giỏ hàng rỗng"), HttpStatus.OK);
+
+			} else {
+				for (Cart cart : carts) {
+					if(cart.getTime() == -1) {
+						TicketsTour ticketsTour = this.ticketsTourDAO.findTicketsTourById(cart.getId());
+						if(cart.getQuantity() <= ticketsTour.getRemain()) {
+							
+						} else {
+							
+							return new ResponseEntity<MessageResponse> (new MessageResponse(false, "vượt quá số lượng"), HttpStatus.OK);
+						}
+					} else {
+						Trip trip = this.tripDAO.findTripById(cart.getId());
+						if(cart.getQuantity() <= trip.getRemain()) {
+							
+						} else {
+							return new ResponseEntity<MessageResponse> (new MessageResponse(false, "vượt quá số lượng"), HttpStatus.OK);
+						}
+					}
+				}
+				
+				this.bookingService.addBookingDTO(customerDTO, carts);
+				
+				carts.clear();
+				return new ResponseEntity<MessageResponse> (new MessageResponse(true, "Đặt vé thành công"), HttpStatus.OK);
+			}
+		} else {
+			return new ResponseEntity<MessageResponse> (new MessageResponse(false, "giỏ hàng rỗng"), HttpStatus.OK);
+		}
 	}
 }

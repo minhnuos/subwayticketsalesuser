@@ -135,4 +135,66 @@ $(document).ready(function(){
 		});
 		
 	});
+	
+	
+	$('#booking').click(function(event) {
+	    event.preventDefault();
+	    let name = $('#username').val();
+	    let phone = $('#phone').val();
+	    let address = $('#address').val();
+	    if(username == '' || phone == '' || address == '' ) {
+	        Swal.fire('Vui lòng nhập đầy đủ thông tin');
+	    } else if($('#quantity-cart').text() == 0) {
+	        Swal.fire('Giỏ hàng đang trống');
+	    } else {
+	        Swal.fire({
+	            title: 'Bạn có chắc?',
+	            text: "Bạn muốn đặt vé!",
+	            icon: 'success',
+	            showCancelButton: true,
+	            confirmButtonColor: '#3085d6',
+	            cancelButtonColor: '#d33',
+	            confirmButtonText: 'Đặt vé',
+	            cancelButtonText: 'Hủy'
+	          }).then((result) => {
+	                if (result.isConfirmed) {
+	                    $.ajax({
+	                        type:"POST",
+	                      url: "http://localhost:8081/api/booking",
+	                      data: {
+	                           name,
+	                           phone,
+	                           address
+	                          
+	                      },
+	                      statusCode: {
+	                          200: function(data) {
+	                              if(data.status) {
+	                                  Swal.fire({
+	                                        position: 'center',
+	                                        icon: 'success',
+	                                        title: `${data.message}`,
+	                                        showConfirmButton: false,
+	                                        timer: 1500
+	                                  })
+	                              } else {
+	                                  Swal.fire({
+	                                        position: 'center',
+	                                        icon: 'warning',
+	                                        title: `${data.message}`,
+	                                        showConfirmButton: false,
+	                                        timer: 1500
+	                                  })
+	                              }
+	                          }
+	                      }
+	                    });
+	                }
+	          })
+	    }
+	    
+	})
+
+
+	
 });

@@ -1,6 +1,7 @@
 package com.nguyenvanminh.subwayticketsalesuser.entity;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -8,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -40,8 +42,21 @@ public class Users implements Serializable{
 	
 	private boolean enabled;
 	
+	@JoinColumn(name = "user_id")
+	@OneToMany(cascade = CascadeType.ALL)
+	private List<Customer> customers;
 	
 	
+	
+	
+	public List<Customer> getCustomers() {
+		return customers;
+	}
+
+	public void setCustomers(List<Customer> customers) {
+		this.customers = customers;
+	}
+
 	public boolean isEnabled() {
 		return enabled;
 	}
