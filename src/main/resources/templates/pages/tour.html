@@ -96,7 +96,7 @@
 															<h3 th:text="${'Từ ' + ticketsTourDTO.getRouteDTO().getStopPointDTOStart().name + ' đến ' + ticketsTourDTO.getRouteDTO().getStopPointDTOEnd().name}"></h3>
 															<ul class="list-unstyled booking-info">
 																<li th:inline="text"><span>Ngày:  </span>  [[${ticketsTourDTO.getDayDTO().day}]] </li>
-																<li th:inline="text"><span>Giá:  </span>  [[${ticketsTourDTO.price}]] vnđ </li>
+																<li th:inline="text"><span>Giá:  </span>  [[${ticketsTourDTO.priceFormat()}]]  </li>
 																<li th:inline="text"><span>Còn lại:  </span>  [[${ticketsTourDTO.remain}]] vé </li>
 															</ul>
 															<button 

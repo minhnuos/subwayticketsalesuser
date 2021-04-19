@@ -31,7 +31,10 @@ public class SubwayticketsalesuserApplication extends WebSecurityConfigurerAdapt
 
 	@Override
 	public void configure(WebSecurity web) throws Exception {
-		web.ignoring().antMatchers("/css/**","/js/**","/images/**","/scss/**","/registration","/assets/**","/fonts/**","/regitrationConfirm");
+		web.ignoring().antMatchers("/css/**","/js/**","/images/**",
+				"/scss/**","/registration","/assets/**","/fonts/**","/regitrationConfirm"
+				
+		);
 	}
 	
 	@Override

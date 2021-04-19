@@ -97,7 +97,7 @@
 															<ul class="list-unstyled booking-info">
 																<li th:inline="text"><span>Ngày:  </span>  [[${day}]] </li>
 																<li th:inline="text"><span>Thời gian :</span> [[${tripDTO.getDepartureTimeDTO().time}]]h </li>
-																<li th:inline="text"><span>Giá:  </span>  [[${tripDTO.price}]] vnđ </li>
+																<li th:inline="text"><span>Giá:  </span>  [[${tripDTO.priceFormat()}]]  </li>
 																<li th:inline="text"><span>Còn lại :  </span>  [[${tripDTO.remain}]] vé </li>
 																
 															</ul>
