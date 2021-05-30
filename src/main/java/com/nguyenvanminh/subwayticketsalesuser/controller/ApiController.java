@@ -11,6 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -24,6 +25,7 @@ import com.nguyenvanminh.subwayticketsalesuser.entity.Trip;
 import com.nguyenvanminh.subwayticketsalesuser.model.Cart;
 import com.nguyenvanminh.subwayticketsalesuser.model.CustomerDTO;
 import com.nguyenvanminh.subwayticketsalesuser.model.MessageResponse;
+import com.nguyenvanminh.subwayticketsalesuser.model.ResponseDetailTickets;
 import com.nguyenvanminh.subwayticketsalesuser.service.BookingService;
 
 @RestController
@@ -38,6 +40,15 @@ public class ApiController {
 	
 	@Autowired
 	BookingService bookingService;
+	
+	
+	@GetMapping("/api/detail-booking")
+	public ResponseEntity<List<ResponseDetailTickets>> detailBooking(@RequestParam int id) {
+		List<ResponseDetailTickets> detailTickets = this.bookingService.listDetailTickets(id);
+		return new ResponseEntity<List<ResponseDetailTickets>>(detailTickets, HttpStatus.OK);
+		
+	}
+	
 	
 	@SuppressWarnings("unchecked")
 	@PostMapping("/api/add-cart")

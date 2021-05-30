@@ -126,12 +126,16 @@
                                          <h3 class="block-title"><a href="hotel-detail-left-sidebar.html" style="    font-family: initial;">Tên khách hàng:  [[${listResponseBooking.customerName}]]</a></h3>
                                           <p style="    font-family: initial;" >Số điện thoại: [[${listResponseBooking.phone}]]</p>
                                           <p style="    font-family: initial;">Thời gian: [[${listResponseBooking.time}]]</p>
-                                          <p class=" badge badge-success" style="    background-color: #28a745;" th:if="${listResponseBooking.status}" > Đã xác nhận</p>
+                                          <p class=" badge badge-success" style="    background-color: #28a745;" th:if="${listResponseBooking.status == 1}" > Đã xác nhận</p>
+                                           <p class=" badge badge-danger" style="background-color: red;" th:if="${listResponseBooking.status == 2}" > Đã hủy</p>
                                         
-                                        <p class=" badge badge-warning" style="background-color: #ffc107;" th:unless="${listResponseBooking.status}" > Chưa xác nhận</p>
+                                        	<p class=" badge badge-warning" style="background-color: #ffc107;" th:if="${listResponseBooking.status == 0}" > Chưa xác nhận</p>
                                         <br>
                                         <br>
-                                        <a style="float: right;"href="hotel-detail-left-sidebar.html" class="btn btn-orange btn-lg">Chi tiết</a>
+                                        <a style="float: right;"
+                                         class="btn btn-orange btn-lg detail-booking" 
+                                         th:data-id="${listResponseBooking.id}"
+                                         >Chi tiết</a>
                                      </div><!-- end h-list-info -->
                             	</div><!-- end list-content -->
                             </div><!-- end h-list-block -->

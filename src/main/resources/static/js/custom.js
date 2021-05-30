@@ -1,5 +1,42 @@
 $(document).ready(function(){
   
+  			$(".detail-booking").click(function(event) {
+			event.preventDefault();
+			var id = $(this).attr("data-id");
+			
+			
+			$.ajax({
+			  type:"GET",
+				url: "http://localhost:8081/api/detail-booking",
+				data: {
+					 id
+					 
+				},
+				statusCode: {
+				    200: function(data) {
+				    let text = "";
+				    	
+				    	for(let i = 0 ; i < data.length;i++) {
+				    		text += '<h5 style="color: #28a745;">'
+				    		text += data[i].code;
+				    		text += '</h5>'
+				    		
+				    		
+				    	}
+				      	Swal.fire({
+							  title:'<h3 style="color:#faa61a;">Danh sách mã vé</h3>',
+							  html:text,
+							  width:600,
+							  
+							  
+							})
+						
+				    }
+				}
+			});
+	
+	});
+  		
   		var getQuantityCart = function() {
   			$.ajax({
 				  	type:"GET",
@@ -150,7 +187,6 @@ $(document).ready(function(){
 	        Swal.fire({
 	            title: 'Bạn có chắc?',
 	            text: "Bạn muốn đặt vé!",
-	            icon: 'success',
 	            showCancelButton: true,
 	            confirmButtonColor: '#3085d6',
 	            cancelButtonColor: '#d33',

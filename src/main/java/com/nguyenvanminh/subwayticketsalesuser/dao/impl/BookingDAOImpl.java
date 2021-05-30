@@ -21,4 +21,10 @@ public class BookingDAOImpl implements BookingDAO{
 		// TODO Auto-generated method stub
 		this.entityManager.persist(booking);
 	}
+
+	@Override
+	public Booking findBookingById(int id) {
+		
+		return this.entityManager.find(Booking.class, id);
+	}
 }

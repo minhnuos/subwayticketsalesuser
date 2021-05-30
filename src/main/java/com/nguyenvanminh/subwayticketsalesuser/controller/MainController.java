@@ -15,11 +15,16 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.nguyenvanminh.subwayticketsalesuser.dao.DepartureTimeDAO;
+import com.nguyenvanminh.subwayticketsalesuser.dao.RouteDAO;
 import com.nguyenvanminh.subwayticketsalesuser.dao.UserDAO;
 import com.nguyenvanminh.subwayticketsalesuser.dao.VerificationTokenDAO;
+import com.nguyenvanminh.subwayticketsalesuser.entity.DepartureTime;
+import com.nguyenvanminh.subwayticketsalesuser.entity.Route;
 import com.nguyenvanminh.subwayticketsalesuser.entity.Users;
 import com.nguyenvanminh.subwayticketsalesuser.event.OnRegistrationCompleteEvent;
 import com.nguyenvanminh.subwayticketsalesuser.model.DayDTO;
+import com.nguyenvanminh.subwayticketsalesuser.model.RouteDTO;
 import com.nguyenvanminh.subwayticketsalesuser.model.StopPointDTO;
 import com.nguyenvanminh.subwayticketsalesuser.model.TicketsTourDTO;
 import com.nguyenvanminh.subwayticketsalesuser.model.UsersDTO;
@@ -53,6 +58,12 @@ public class MainController {
 	UserDAO userDAO;
 	
 	@Autowired
+	DepartureTimeDAO departureTimeDAO;
+	
+	@Autowired
+	RouteDAO routeDAO;
+	
+	@Autowired
 	VerificationTokenService verificationTokenService;
 	
 	@GetMapping("/")
@@ -73,7 +84,13 @@ public class MainController {
 			}
 		}
 		
+		List<DepartureTime> departureTimes = this.departureTimeDAO.listDepartureTimes();
+		List<Route> routes = this.routeDAO.listRoute();
+		
+		
 		map.addAttribute("ticketsTourDTOs", ticketsTourDTOs);
+		map.addAttribute("departureTimes", departureTimes.size());
+		map.addAttribute("routes", routes.size());
 		
 		return "pages/home";
 	}

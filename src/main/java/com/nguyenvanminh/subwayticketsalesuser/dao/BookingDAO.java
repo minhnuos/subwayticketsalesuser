@@ -8,5 +8,5 @@ public interface BookingDAO {
 
 	public void addBooking(Booking booking);
 	
-	
+	public Booking findBookingById(int id);
 }

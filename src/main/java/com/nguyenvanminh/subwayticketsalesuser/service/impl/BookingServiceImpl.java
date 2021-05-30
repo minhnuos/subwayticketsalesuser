@@ -31,6 +31,7 @@ import com.nguyenvanminh.subwayticketsalesuser.model.BookingDTO;
 import com.nguyenvanminh.subwayticketsalesuser.model.Cart;
 import com.nguyenvanminh.subwayticketsalesuser.model.CustomerDTO;
 import com.nguyenvanminh.subwayticketsalesuser.model.ResponseBooking;
+import com.nguyenvanminh.subwayticketsalesuser.model.ResponseDetailTickets;
 import com.nguyenvanminh.subwayticketsalesuser.service.BookingService;
 
 @Service
@@ -67,7 +68,7 @@ public class BookingServiceImpl implements BookingService{
 			List<Booking> bookings = new ArrayList<Booking>(); // khởi tạo list bookings
 			Booking booking = new Booking();
 			booking.setCustomer(customer);
-			booking.setStatus(false);
+			booking.setStatus(0);
 			int total = 0;
 			for (Cart cart : carts) {
 				total += cart.getPrice()*cart.getQuantity();
@@ -152,7 +153,7 @@ public class BookingServiceImpl implements BookingService{
 				responseBooking.setId(booking.getId());
 				responseBooking.setCustomerName(customer.getName());
 				responseBooking.setTotal(booking.getTotal());
-				responseBooking.setStatus(booking.isStatus());
+				responseBooking.setStatus(booking.getStatus());
 				responseBooking.setTime(booking.getTime());
 				responseBooking.setPhone(customer.getPhone());
 				responseBooking.setQuantity(booking.getBookingTickets().size() + booking.getBookingTicketsTours().size());
@@ -161,6 +162,31 @@ public class BookingServiceImpl implements BookingService{
 		}
 		
 		return listResponseBookings;
+	}
+
+	@Override
+	public List<ResponseDetailTickets> listDetailTickets(int id) {
+		List<ResponseDetailTickets> detailTickets = new ArrayList<ResponseDetailTickets>();
+		Booking booking = this.bookingDAO.findBookingById(id);
+		if(booking != null) {
+			
+			List<BookingTickets> listBookingTickets = booking.getBookingTickets();
+			for (BookingTickets bookingTickets : listBookingTickets) {
+				ResponseDetailTickets responseDetailTickets = new ResponseDetailTickets();
+				responseDetailTickets.setCode(bookingTickets.getTickets().getCode());
+				responseDetailTickets.setPrice(bookingTickets.getTickets().getTrip().getPrice());
+				detailTickets.add(responseDetailTickets);
+			}
+			
+			List<BookingTicketsTour> listBookingTicketsTours = booking.getBookingTicketsTours();
+			for (BookingTicketsTour bookingTicketsTour : listBookingTicketsTours) {
+				ResponseDetailTickets responseDetailTickets = new ResponseDetailTickets();
+				responseDetailTickets.setCode(bookingTicketsTour.getTicketsTourDetail().getCode());
+				responseDetailTickets.setPrice(bookingTicketsTour.getTicketsTourDetail().getTicketsTour().getPrice());
+				detailTickets.add(responseDetailTickets);
+			}
+		}
+		return detailTickets;
 	}
 
 	

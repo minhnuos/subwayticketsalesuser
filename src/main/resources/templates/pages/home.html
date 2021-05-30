@@ -334,7 +334,15 @@
 									<div class="main-title tour-title">
 										<a href="#" th:text="${'Từ ' + ticketsTourDTO.getRouteDTO().getStopPointDTOStart().name + ' đến ' + ticketsTourDTO.getRouteDTO().getStopPointDTOEnd().name}"></a>
 										<p th:text="${'Ngày ' + ticketsTourDTO.getDayDTO().day}"></p>
-										<button class="btn btn-block btn-orange">Thêm vào giỏ hàng</button>
+										<button 
+										th:data-day="${ticketsTourDTO.getDayDTO().day}" 
+										th:data-id="${ticketsTourDTO.id}"
+										th:data-start="${ticketsTourDTO.getRouteDTO().getStopPointDTOStart().name}" 
+										th:data-end="${ticketsTourDTO.getRouteDTO().getStopPointDTOEnd().name}"
+										th:data-time="-1"
+										th:data-price="${ticketsTourDTO.price}"
+										th:data-tour="1"
+										class="btn btn-block btn-orange add-cart">Thêm vào giỏ hàng</button>
 									</div>
 									<!-- end tour-title -->
 								</div>
@@ -370,24 +378,9 @@
 					<div class="row">
 						<div id="boxes">
 
-							<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-								<div class="highlight-box">
-									<div class="h-icon">
-										<span><i class="fa fa-plane"></i></span>
-									</div>
-									<!-- end h-icon -->
+							
 
-									<div class="h-text">
-										<span class="numbers">2496</span>
-										<p>Outstanding Tours</p>
-									</div>
-									<!-- end h-text -->
-								</div>
-								<!-- end highlight-box -->
-							</div>
-							<!-- end columns -->
-
-							<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+							<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
 								<div class="highlight-box">
 									<div class="h-icon">
 										<span><i class="fa fa-ship"></i></span>
@@ -395,8 +388,8 @@
 									<!-- end h-icon -->
 
 									<div class="h-text cruise">
-										<span class="numbers">1906</span>
-										<p>Worldwide Cruise</p>
+										<span class="numbers" th:text="${departureTimes}"></span>
+										<p>Khung giờ</p>
 									</div>
 									<!-- end h-text -->
 								</div>
@@ -404,7 +397,7 @@
 							</div>
 							<!-- end columns -->
 
-							<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+							<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
 								<div class="highlight-box">
 									<div class="h-icon">
 										<span><i class="fa fa-taxi"></i></span>
@@ -412,8 +405,8 @@
 									<!-- end h-icon -->
 
 									<div class="h-text taxi">
-										<span class="numbers">2033</span>
-										<p>Luxury Car Booking</p>
+										<span class="numbers" th:text="${routes}"></span>
+										<p>Tuyến đường</p>
 									</div>
 									<!-- end h-text -->
 								</div>
@@ -452,6 +445,7 @@
 	<script th:src="@{/js/custom-flex.js}"></script>
 	<script th:src="@{/js/custom-owl.js}"></script>
 	<script th:src="@{/js/custom-date-picker.js}"></script>
+	<script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 	<script th:src="@{/js/custom.js}"></script>
 	<!-- Page Scripts Ends -->
 
